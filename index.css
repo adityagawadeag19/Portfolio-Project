@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+
+  /* Portfolio specific colors - Light mode */
+  --portfolio-bg: hsl(0, 0%, 100%);
+  --portfolio-surface: hsl(210, 40%, 98%);
+  --portfolio-primary: hsl(207, 90%, 54%);
+  --portfolio-secondary: hsl(170, 76%, 64%);
+  --portfolio-text: hsl(210, 22%, 22%);
+  --portfolio-muted: hsl(215, 20%, 65%);
+}
+
+.dark {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 33%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(217, 33%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(217, 33%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(212.7, 26.8%, 83.9%);
+  --radius: 0.5rem;
+
+  /* Portfolio specific colors - Dark mode */
+  --portfolio-bg: hsl(222, 47%, 11%);
+  --portfolio-surface: hsl(217, 33%, 17%);
+  --portfolio-primary: hsl(170, 76%, 64%);
+  --portfolio-secondary: hsl(207, 90%, 77%);
+  --portfolio-text: hsl(215, 20%, 65%);
+  --portfolio-muted: hsl(217, 10%, 40%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .portfolio-bg {
+    background-color: var(--portfolio-bg);
+  }
+  
+  .portfolio-surface {
+    background-color: var(--portfolio-surface);
+  }
+  
+  .portfolio-text {
+    color: var(--portfolio-text);
+  }
+  
+  .portfolio-muted {
+    color: var(--portfolio-muted);
+  }
+  
+  .portfolio-primary {
+    color: var(--portfolio-primary);
+  }
+  
+  .portfolio-secondary {
+    color: var(--portfolio-secondary);
+  }
+
+  .theme-transition {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .project-card {
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .skill-progress {
+    transition: width 2s ease-in-out;
+  }
+
+  .nav-link {
+    @apply relative transition-colors duration-200;
+    color: var(--portfolio-muted);
+  }
+
+  .nav-link:hover {
+    color: var(--portfolio-primary);
+  }
+
+  .nav-link::after {
+    @apply absolute left-0 -bottom-1 w-0 h-0.5 transition-all duration-200;
+    content: '';
+    background-color: var(--portfolio-primary);
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .section-number {
+    @apply font-mono text-xl mr-4;
+    color: var(--portfolio-primary);
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-bold;
+    color: var(--portfolio-text);
+  }
+
+  .section-underline {
+    @apply w-20 h-1;
+    background-color: var(--portfolio-primary);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px); 
+    }
+    50% { 
+      transform: translateY(-20px); 
+    }
+  }
+}
